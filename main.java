@@ -22,12 +22,16 @@ class Grid {
 
 //View
 class GridView{
+    String Blue = "\u001B[34m";
+    int lineCount = 0;
     public void displayGrid(char[][] grid){
         for(char[] row : grid){
             for(char cell : row){
-                System.out.print(cell + " ");
+                System.out.print(Blue + cell + " ");
             }
             System.out.println();
+            lineCount += 1;
+            if(lineCount < 8) System.out.print(" "); 
         }
     }
 }
@@ -54,11 +58,27 @@ class GridController{
 //Main
 public class Main {
     public static void main(String[] args){
-        Grid model = new Grid(5, 5);
+        Grid model = new Grid(9, 9);
         GridView view = new GridView();
         GridController controller = new GridController(model, view);
 
-        controller.setCell(2, 2, 'X');
+        controller.setCell(0, 0, '⬛');
+        controller.setCell(0, 8, '⬛');
+        controller.setCell(8, 0, '⬛');
+        controller.setCell(8, 8, '⬛');
+
+        for(int i = 1; i < 8; i++){
+            controller.setCell(i, 0, '▪');
+        }
+        for(int i = 1; i < 8; i++){
+            controller.setCell(i, 8, '▪');
+        }
+        for(int i = 1; i < 8; i++){
+            controller.setCell(0, i, '▪');
+        }
+        for(int i = 1; i < 8; i++){
+            controller.setCell(8, i, '▪');
+        }
         controller.updateView();
     }
 }
