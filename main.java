@@ -25,7 +25,7 @@ class GridView{
     public void displayGrid(char[][] grid){
         for(char[] row : grid){
             for(char cell : row){
-                System.out.println(cell + " ");
+                System.out.print(cell + " ");
             }
             System.out.println();
         }
@@ -52,7 +52,7 @@ class GridController{
 }
 
 //Main
-public class main {
+public class Main {
     public static void main(String[] args){
         Grid model = new Grid(5, 5);
         GridView view = new GridView();
