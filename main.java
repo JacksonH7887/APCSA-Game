@@ -23,19 +23,87 @@ class Grid {
 //View
 class GridView{
     String Blue = "\u001B[34m";
+    String Brown = "\u001B[30m";
+    String Cyan = "\u001B[36m";	
+    String Pink = "\u001B[35m";
+    String Orange = "\u001B[37m";
+    String Red = "\u001B[31m";	
+    String Yellow = "\u001B[33m";
+    String Green = "\u001B[32m";	
+    String White = "\u001B[37m";
     int lineCount = 0;
-    public void displayGrid(char[][] grid){
-        for(char[] row : grid){
-            for(char cell : row){
-                System.out.print(Blue + cell + " ");
-            }
-            System.out.println();
-            lineCount += 1;
-            if(lineCount < 8) System.out.print(" "); 
+    
+    public void printSpace(){
+        for(int i = 0; i < 9; i++){
+            System.out.print(Brown + '◦' +" ");
         }
     }
+    public void newLine(){
+        System.out.println(); System.out.print(" "); 
+    }
+    public void displayGrid(char[][] grid){
+        System.out.print(Blue + grid[0][0] + " ");
+        System.out.print(Red + grid[0][1] + " ");
+        System.out.print(White + "▢" + " ");
+        System.out.print(Red + grid[0][3] + " ");
+        System.out.print(Red + grid[0][4] + " ");
+        System.out.print(White + "▢" + " ");
+        System.out.print(Yellow + grid[0][6] + " ");
+        System.out.print(Yellow + grid[0][7] + " ");
+        System.out.print(White + "▢" + " ");
+        System.out.print(Yellow + grid[0][9] + " ");
+        System.out.print(Blue + grid[0][10] + " ");
+        newLine();
+        System.out.print(Orange + grid[1][0] + " ");
+        printSpace();
+        System.out.print(Green + grid[1][10] + " ");
+        newLine();
+        System.out.print(Orange + grid[2][0] + " ");
+        printSpace();
+        System.out.print(Green + grid[2][10] + " ");
+        newLine();
+        System.out.print(White + "▢" + " ");
+        printSpace();
+        System.out.print(White + "▢" + " ");
+        newLine();
+        System.out.print(Orange + grid[4][0] + " ");
+        printSpace();
+        System.out.print(Green + grid[4][10] + " ");
+        newLine();
+        System.out.print(White + "▢" + " ");
+        printSpace();
+        System.out.print(White + "▢" + " ");
+        newLine();
+        System.out.print(Pink + grid[6][0] + " ");
+        printSpace();
+        System.out.print(White + "▢" + " ");
+        newLine();
+        System.out.print(Pink + grid[7][0] + " ");
+        printSpace();
+        System.out.print(Blue + grid[7][10] + " ");
+        newLine();
+        System.out.print(White + "▢" + " ");
+        printSpace();
+        System.out.print(White + "▢" + " ");
+        newLine();
+        System.out.print(Pink + grid[9][0] + " ");
+        printSpace();
+        System.out.print(Blue + grid[9][10] + " ");
+        System.out.println();
+        System.out.print(Blue + grid[10][0] + " ");
+        System.out.print(Cyan + grid[10][1] + " ");
+        System.out.print(Cyan + grid[10][2] + " ");
+        System.out.print(White + "▢" + " ");
+        System.out.print(Cyan + grid[10][4] + " ");
+        System.out.print(White + "▢" + " ");
+        System.out.print(White + "▢" + " ");
+        System.out.print(Brown + grid[10][7] + " ");
+        System.out.print(White + "▢" + " ");
+        System.out.print(Brown + grid[10][9] + " ");
+        System.out.print(Blue + grid[10][10] + " ");
+        System.out.println();
+    }
 }
-
 //Controller
 class GridController{
     private Grid model;
@@ -58,27 +126,27 @@ class GridController{
 //Main
 public class Main {
     public static void main(String[] args){
-        Grid model = new Grid(9, 9);
+        Grid model = new Grid(11, 11);
         GridView view = new GridView();
         GridController controller = new GridController(model, view);
 
         controller.setCell(0, 0, '⬛');
-        controller.setCell(0, 8, '⬛');
-        controller.setCell(8, 0, '⬛');
-        controller.setCell(8, 8, '⬛');
+        controller.setCell(0, 10, '⬛');
+        controller.setCell(10, 0, '⬛');
+        controller.setCell(10, 10, '⬛');
 
-        for(int i = 1; i < 8; i++){
+        for(int i = 1; i < 10; i++){
             controller.setCell(i, 0, '▪');
         }
-        for(int i = 1; i < 8; i++){
-            controller.setCell(i, 8, '▪');
+        for(int i = 1; i < 10; i++){
+            controller.setCell(i, 10, '▪');
         }
-        for(int i = 1; i < 8; i++){
+        for(int i = 1; i < 10; i++){
             controller.setCell(0, i, '▪');
         }
-        for(int i = 1; i < 8; i++){
-            controller.setCell(8, i, '▪');
+        for(int i = 1; i < 10; i++){
+            controller.setCell(10, i, '▪');
         }
-        controller.updateView();
+        
     }
 }

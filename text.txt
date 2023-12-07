@@ -1,6 +1,8 @@
-🟦🟦
-⬜⬜
-⬜⬜
-
-⬜⬜🟦
-⬜⬜🟦
+Brown = \u001B[30m
+Cyan = \u001B[36m	
+Pink = \u001B[35m
+Orange = \u001B[37m
+Red = \u001B[31m	
+Yellow = \u001B[33m	
+Green = \u001B[32m	
+Blue =
